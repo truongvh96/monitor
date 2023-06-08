@@ -52,7 +52,7 @@ cat /etc/prometheus/prometheus.yml
 ```
 # my global config
 global:
-  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
 
@@ -73,12 +73,27 @@ rule_files:
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: 'prometheus'
+    static_configs:
+            - targets: ['localhost:9090','<ip_node_exporter>:9100']
 
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-  static_configs:
-  - targets: ['localhost:9090']
+  ## Khai bao target cho vcenter
+  - job_name: 'vcenter_node'
+    scrape_timeout: 15s
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets:
+        - '<ip_vmware>'
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: <ip_prometheus_server>:9272
+  - job_name: 'windows'
+    static_configs:
+            - targets: ['<ip_win>:9182']
 ```
 Chú ý: với target t sẽ khai báo thêm các node exporter sau.
 
