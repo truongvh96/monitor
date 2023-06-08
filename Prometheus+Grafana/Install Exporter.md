@@ -1,3 +1,4 @@
+Trên bài lab này mình lấy metric của node nên mình sẽ cài đặt node Exporter.
 Tải :
 ```
 wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz
