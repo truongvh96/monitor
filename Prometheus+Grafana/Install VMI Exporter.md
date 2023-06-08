@@ -29,8 +29,10 @@ Bước 5: Tạo job trong prometheus để giám sát Windows Server này với
  Thêm nội dung sau:
  ```
   - job_name: 'windows'
+    scrape_interval: 10s
     static_configs:
-    - targets: ['10.10.10.8:9182']
+    - targets: 
+      - '10.10.10.8:9182'
       labels:                           
        hostname: DC01
        type: windows
