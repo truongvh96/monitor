@@ -99,6 +99,9 @@ Chú ý: với target t sẽ khai báo thêm các node exporter sau.
 
 Tạo file service cho prometheus
 ```
+vi /etc/systemd/system/prometheus.service
+```
+```
 [Unit]
 Description=Prometheus
 Wants=network-online.target
