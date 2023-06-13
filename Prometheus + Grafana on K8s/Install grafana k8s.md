@@ -57,3 +57,8 @@ spec:
   type: NodePort
   ```
   Ở đây mình dùng NodePort để có thể truy cập từ ngoài qua port 30012.
+
+- Chạy lệnh sau để apply
+```
+kubectl apply -f grafana.yaml -n monitoring
+```
