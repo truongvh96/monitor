@@ -1,3 +1,4 @@
+```
 services:
   prometheus:
     image: prom/prometheus
@@ -35,3 +36,4 @@ volumes:
     driver: local
   grafana-data:
     driver: local
+```
