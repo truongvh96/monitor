@@ -22,15 +22,6 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
       - grafana-data:/var/lib/grafana
-  node_exporter:
-    image: imageName
-    container_name: node_exporter
-    command: 
-      - '--path.rootfs=/host'
-    pid: host
-    restart: unless-stopped
-    volumes:
-      - '/:host:ro,rslave'
 volumes:
   prom_data:
     driver: local
